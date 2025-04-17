@@ -1,0 +1,23 @@
+.home-container {
+  text-align: center;
+  padding: 2rem;
+}
+.ph-logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+h2 {
+  font-size: 1.25rem;
+  color: #333;
+}
+.welcome-heading {
+  margin-bottom: 0.5rem;
+}
+
+.user-id {
+  font-size: 0.875rem;    /* ~14px if your root is 16px */
+  margin: 0;              /* remove extra spacing */
+  white-space: nowrap;    /* keep it on one line */
+  overflow: hidden;       /* if it’s still too long, hide overflow */
+  text-overflow: ellipsis;
+}
