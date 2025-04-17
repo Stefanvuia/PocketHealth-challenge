@@ -17,13 +17,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void { }
 
   onFormSubmit(form: NgForm) {
-    const name = form.value.name;
+    const name  = form.value.name;
     const email = form.value.email;
 
-    this.userService.postRegister(name, email).subscribe(() => {
-      // Once we've received a response, take the user to the home page
-      this.router.navigateByUrl('/home');
-    })
+    this.userService.postRegister(name, email)
+      .subscribe({
+        next: (resp: { user_id: string }) => {
+          this.router.navigateByUrl('/home', {
+            state: { name, userId: resp.user_id }
+          });
+        },
+        error: err => {
+          alert('Registration failed: ' + err.message);
+        }
+      });
   }
-
 }
