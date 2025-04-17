@@ -25,5 +25,5 @@ func (s UserApiService) PostRegister(ctx context.Context, name string, email str
 	log.Printf("created user with id: %s\n", userId)
 
 	// return the user id
-	return "", err
+	return userId, nil
 }
