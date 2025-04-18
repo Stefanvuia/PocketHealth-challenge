@@ -1,0 +1,29 @@
+.colour-picker-bar {
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+/* WebKit */
+.colour-picker-bar::-webkit-color-swatch-wrapper { padding: 0; }
+.colour-picker-bar::-webkit-color-swatch { border: none; border-radius: 6px; }
+
+/* Firefox */
+.colour-picker-bar::-moz-color-swatch { border: none; border-radius: 6px; }
+
+.error-text {
+  color: #d9534f;      /* bootstrap‑like red */
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.invalid {
+  border-color: #d9534f !important;
+}

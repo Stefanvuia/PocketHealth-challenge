@@ -1,7 +1,18 @@
 .home-container {
   text-align: center;
   padding: 2rem;
+  /* ensure it fills its parent */
+  min-height: 300px;
+  /* fallback background if favouriteColour is empty */
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
 }
+
+.home-container * {
+  color: white;
+  text-shadow: 0 0 3px rgba(0,0,0,0.8);
+}
+
 .ph-logo {
   width: 120px;
   margin-bottom: 1rem;
@@ -20,4 +31,12 @@ h2 {
   white-space: nowrap;    /* keep it on one line */
   overflow: hidden;       /* if it’s still too long, hide overflow */
   text-overflow: ellipsis;
+}
+
+.user-colour .colour-swatch {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin-right: 0.5rem;
 }

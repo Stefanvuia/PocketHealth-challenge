@@ -10,6 +10,7 @@ import { UserService }      from '../services/user.service';
 export class HomeComponent implements OnInit {
   name   = '';
   userId = '';
+  favouriteColour  = '#ffffff';
 
   constructor(
     private router:      Router,
@@ -17,11 +18,12 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const navState = window.history.state as { name?: string; userId?: string };
+    const navState = window.history.state as { name?: string; userId?: string; favouriteColour?: string};
 
-    if (navState.name && navState.userId) {
+    if (navState.name && navState.userId && navState.favouriteColour) {
       this.name   = navState.name;
       this.userId = navState.userId;
+      this.favouriteColour = navState.favouriteColour;
       return;
     }
 
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit {
     if (details) {
       this.name   = details.name;
       this.userId = details.userId;
+      this.favouriteColour = details.favouriteColour;
       return;
     }
 
@@ -37,3 +40,4 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/register');
   }
 }
+

@@ -9,6 +9,8 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  favouriteColour: string = '#000000';
+  
   constructor(
     private userService: UserService,
     private router: Router,
@@ -17,14 +19,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void { }
 
   onFormSubmit(form: NgForm) {
-    const name  = form.value.name;
-    const email = form.value.email;
-
-    this.userService.postRegister(name, email)
+    const name   = form.value.name;
+    const email  = form.value.email;
+    const colour = form.value.favourite_colour;    // hex string like “#3a9ad9”
+  
+    this.userService.postRegister(name, email, colour)
       .subscribe({
         next: (resp: { user_id: string }) => {
           this.router.navigateByUrl('/home', {
-            state: { name, userId: resp.user_id }
+            state: { name, userId: resp.user_id, colour}
           });
         },
         error: err => {

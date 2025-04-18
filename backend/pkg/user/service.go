@@ -15,9 +15,9 @@ func NewUserApiService() UserApiService {
 }
 
 // PostRegister - Register a User
-func (s UserApiService) PostRegister(ctx context.Context, name string, email string) (string, error) {
+func (s UserApiService) PostRegister(ctx context.Context, name string, email string, colour string) (string, error) {
 	// save user to datastore
-	userId, err := datastore.CreateUser(ctx, name, email)
+	userId, err := datastore.CreateUser(ctx, name, email, colour)
 	if err != nil {
 		log.Printf("error creating user: %q", err.Error())
 		return "", err

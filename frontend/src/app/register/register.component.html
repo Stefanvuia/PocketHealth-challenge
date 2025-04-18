@@ -8,23 +8,45 @@
   <div class="form-container">
     <form (ngSubmit)="onFormSubmit(form)" #form="ngForm">
       <!-- Input Fields -->
+      <!-- Name -->
       <div class="input-row">
         <label for="name">Name</label>
-        <input ngModel type="text" name="name" class="input-field" placeholder="Name" [autofocus]>
+        <input ngModel name="name" #nameModel="ngModel" required type="text" class="input-field" placeholder="Name"
+          [autofocus] [ngClass]="{'invalid': nameModel.invalid && nameModel.touched}">
+        <div *ngIf="nameModel.invalid && nameModel.touched" class="error-text">
+          Name is required.
+        </div>
       </div>
+
+      <!-- Email -->
       <div class="input-row">
         <label for="email">Email</label>
-        <input ngModel name="email" type="email" class="input-field" placeholder="Email">
+        <input ngModel name="email" #emailModel="ngModel" required email type="email" class="input-field"
+          placeholder="Email" [ngClass]="{'invalid': emailModel.invalid && emailModel.touched}">
+        <div *ngIf="emailModel.invalid && emailModel.touched" class="error-text">
+          A valid email is required.
+        </div>
+      </div>
+
+      <!-- Favourite Colour -->
+      <div class="input-row">
+        <label for="favourite_colour">Favourite Colour</label>
+        <div class="colour-input-group">
+          <input type="color" name="favourite_colour" id="favourite_colour" class="input-field colour-picker-bar"
+            [(ngModel)]="favouriteColour" />
+        </div>
       </div>
 
       <!-- Button -->
       <div class="button-row">
-        <button class="btn primary-btn" type="submit">
+        <button
+          class="btn primary-btn"
+          type="submit"
+          [disabled]="form.invalid"
+        >
           Register
         </button>
       </div>
     </form>
   </div>
 </div>
-
-<a routerLink="/home">Go to Home</a>
