@@ -1,39 +1,33 @@
-# PocketHealth Intern Challenge
-
-## Setup
-For this assignment, the backend is written in Golang. Please go [here](https://go.dev/), and follow the appropriate instructions to set up the environment on your machine.
-
-The frontend is written in Angular. You can find instructions to set up your environment [here](https://angular.io/guide/setup-local).
-
-Please unzip the starter code attached. You will find the source code for the server in "/backend", and the web app in "/frontend".
-
-Please go ahead and build and run the server and web app, there are instructions below. The server is configured to run on your localhost, at port 8080, and the web app will run on port 4200. Once both the server and app are running, using any browser, you may wish to visit http://localhost:4200
+# PocketHealth Intern Challenge Submission
+Stefan Vuia - stefanvuia@gmail.com
 
 ## Run Project
 To run the full project, you'll need to run the backend and frontend.
 
 ### Backend
-Install dependencies using `go get ./...` and then build and run the project.
+Install dependencies using and then build and run the project:
+```bash
+cd ./backend
+go get ./...
+go run main.go
+```
 
 ### Frontend
 Install dependencies using `npm install` and then serve the Angular project.
+```bash
+ng serve --open
+```
 
-## Changes
-1.  We're considering allowing anyone to register for access to PocketHealth. This task will give you a flavour of the approach.
+## Checklist of required changes
+1. Updated main.go to have `LISTEN_PORT = '80'`
+   
+   Additionally, changed the `apiUrl: 'http://localhost'` in environment.ts for the frontend to access the api from the default port (80)
 
-2. We'd like to modify the server to run on port 80. Please make the appropriate modification.
+2. Fixed the bug in backend/pkg/user/service.go that caused POST "/register" to not return the User ID by returning the correct value in PostRegister(). 
 
-3. There is a bug where the POST "/register" isn’t returning the User ID. Instead it returns an empty string. Find and fix this bug.
+3. Implemented the "/home" page that displays "Welcome to PocketHealth {Name}. Your User ID is: {User ID}" on a background containing the user's favourite colour.
 
-4. The registration page attempts to redirect the user to "/home" but it fails since this page isn’t implemented yet. Please add a page to the web app on the "/home" path that displays the message: "Welcome to PocketHealth {Name}. Your User ID is: {User ID}"
+4. Changed the "/register" page to not allow the user to signup without a name or a proper email.
+  
+5. added a colour wheel input in the "/register" page to allow the user to pick its favourite colour to be displayed on the home page.
 
-You can use the "/register" page as a template, please keep the PocketHealth logo on the page.
-
-5. After some time, we decide that we also want to capture the user's favourite colour. Please extend the form to collect the user's favourite colour and update the backend to store this with the user's other details.
-
-6. Modify the home page to display the user's favourite colour.
-
-7. You may wish to perform some basic input sanitization and form validation in the front end. If you wish, go ahead and do so.
-
-## Submission
-Please provide a link to your solution (Google Drive, Dropbox, GitHub, etc), and email it back  within the next 24 hours. 
